@@ -46,5 +46,4 @@ fn main() {
     lesson.add_note(" еще один фрагмент");
     lesson.view();
     lesson.publish();
-
 }
