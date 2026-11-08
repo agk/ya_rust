@@ -1,20 +1,29 @@
-// fn longest_word<'a>(words: &[&'a str]) -> Option<&'a str> {
-//     words.iter().copied().max_by_key(|w| w.len())
-// }
+fn announce(project: String) -> String {
+    println!("Проект: {project}");
+    project
+}
 
-fn longest_word<'a>(words: &[&'a str]) -> Option<&'a str> {
-    let mut best: Option<&'a str> = None;
-    for &w in words {                 // &w разыменовывает &&'a str → &'a str
-        match best {
-            Some(b) if b.len() >= w.len() => {}
-            _ => best = Some(w),
-        }
-    }
-    best
+fn add_suffix(text: String) -> (String, String) {
+    let tagged = format!("{text}-v1");
+    (text, tagged)
 }
 
 fn main() {
-    let words = ["rust", "ownership", "borrow"];
-    let result = longest_word(&words);
-    println!("{result:?}"); // Some("ownership")
+    let x = 42;
+    let y = x;
+
+    let project = String::from("calculator");
+    let project = announce(project);
+    println!("Длина project: {}", project.len());
+
+    let release = String::from("rust");
+    let (release, tagged) = add_suffix(release);
+    println!("Исходная метка: {release}");
+    println!("Новая метка: {tagged}");
+
+    let label = String::from("move");
+    let label_copy = label.clone();
+    println!("label = {label}, label_copy = {label_copy}");
+
+    println!("x = {x}, y = {y}");
 }
