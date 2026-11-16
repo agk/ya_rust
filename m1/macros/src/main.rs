@@ -12,8 +12,17 @@ macro_rules! say {
     };
 }
 
+macro_rules! log {
+    ($level:expr, $msg:expr) => { 
+        println!("[{}] {}", $level, $msg);
+    }
+}
+
 fn main() {
     say_hello!();
     say!("Привет, мир!");
     say!("Сегодня мы учим макросы в Rust");
+
+    log!("INFO", "Сервер запущен");
+    log!("ERROR", "Соединение потеряно");
 }
